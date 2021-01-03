@@ -1,0 +1,78 @@
+{% extends "framework.html" %}
+{% block content %}
+
+<div class="container">
+
+  <div class="nav-scroller py-2 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 link-secondary" href="{{ url_for('index.all_index') }}" >首页</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.courses') }}">课程</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.teachers') }}">教师阵容</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.help') }}">使用手册</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.contact') }}">联系我们</a>
+    </nav>
+  </div>
+</div>
+
+<main class="container py-5">
+  <h1>教师阵容</h1>
+  <p class="lead">来自浙江大学计算机科学与技术学院、软件学院等多个学院的师资支持。</p>
+  <hr class="my-5">
+
+  <div class="row" data-masonry='{"percentPosition": true }'>
+    <div class="col-sm-6 col-lg-4 mb-4">
+      <div class="card">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">照片</text></svg>
+
+        <div class="card-body">
+          <h5 class="card-title">邢卫</h5>
+          <p class="card-text">浙江大学计算机科学与技术学院计算机系主任，博士，副教授；硕士生导师，博士生联合导师。长期从事操作系统、计算机网络、软件工程等专业核心课程的教学，并主持计算机系专业培养方案的制定，承担计算机系教学管理工作等。主要研究领域包括人工智能、计算机网络和多媒体技术，作为课题负责人或主要骨干承担国家自然科学基金项目、国家科技攻关计划项目、国家科技支撑计划项目、浙江省重大科技计划项目等多项，获得科研成果3项，获省部级科技奖励2项，获发明专利授权4项，发表学术论文约40篇，持有软件著作权20余项，累计指导博士和硕士研究生40余名。</p>
+        </div>
+      </div>
+    </div>
+ <div class="col-sm-6 col-lg-4 mb-4">
+      <div class="card">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">照片</text></svg>
+
+        <div class="card-body">
+          <h5 class="card-title">林海</h5>
+          <p class="card-text">浙江大学CAD&CG国家重点实验室教授/博士生导师。多年来一直从事计算电磁学、计算机图形学、科学计算可视化等方面的研究。作为项目负责人承担国家自然科学基金项目四项，国家863高技术项目三项。曾于2000年9月赴英国De Montfort大学计算机系进行访问研究，参加了欧盟第五框架的项目VAKHUM和MultiMod的研究。</p>
+        </div>
+      </div>
+    </div>
+	   <div class="col-sm-6 col-lg-4 mb-4">
+      <div class="card">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">照片</text></svg>
+
+        <div class="card-body">
+          <h5 class="card-title">金波</h5>
+          <p class="card-text">教授，博士生导师。1993年6月毕业于浙江大学流体传动及控制专业，获学士学位。1998年9月于浙江大学流体传动及控制专业获得博士学位，同年留校任教。作为主要完成人获得国家技术发明奖二等奖一项，省部级科技进步一等奖两项。承担多项国家自然科学基金、863计划重点项目及浙江省自然科学基金重点项目。承担多项横向科研项目，均圆满地完成了研发任务。共在国内外学术刊物与国际会议上发表论文七十余篇，其中SCI/EI收录三十余篇。获得国家发明专利、软件著作权二十余项。</p>
+        </div>
+      </div>
+    </div>
+	   <div class="col-sm-6 col-lg-4 mb-4">
+      <div class="card">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">照片</text></svg>
+
+        <div class="card-body">
+          <h5 class="card-title">邵健</h5>
+          <p class="card-text">2003年7月从南京大学电子科学与工程系获得理学学士学位；2008年7月从中国科学院声学研究所获得信号与信息处理专业工学博士学位；2008年7月博士毕业后直接进入浙江大学计算机学院计算机应用学科从事师资博后研究工作，并在2010年9月留校，浙大工作期间研究方向拓展为视音频智能分析、跨媒体挖掘与检索、分布式计算，作为负责人承担了中国博士后基金面上与特别资助项目、教育部-微软重点实验室联合项目、省优先主题社会发展项目子课题等多个项目，并作为青年骨干参与承担了973项目子课题、NSFC重大研究计划、核高基重大专项子课题等多个项目。</p>
+        </div>
+      </div>
+    </div>
+	   <div class="col-sm-6 col-lg-4 mb-4">
+      <div class="card">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">照片</text></svg>
+
+        <div class="card-body">
+          <h5 class="card-title">刘玉生</h5>
+          <p class="card-text">博士，浙江大学计算机学院研究员，博士生导师，CAD&CG国家重点实验室固定研究人员。1995年7月在浙江大学获硕士学位后赴澳门贺田工业有限公司从事机电产品的研发。1997年9月起在浙江大学机械制造及自动化专业攻读博士学位并于2000年9月毕业。同年10月进入浙江大学CAD&;CG国家重点实验室从事博士后研究，2002年10月出站后前往在香港城市大学继续从事博士后研究。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+    <script async src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
+
+{% endblock content %}

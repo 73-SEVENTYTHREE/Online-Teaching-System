@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>管理员界面</title>
+	<!-- Styles -->
+    <link href="/admin/static/css/lib/themify-icons.css" rel="stylesheet">
+    <link href="/admin/static/css/lib/sidebar.css" rel="stylesheet">
+    <link href="/admin/static/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="/admin/static/css/lib/nixon.css" rel="stylesheet">
+    <link href="/admin/static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <li><a href="{{ url_for('admin.admin_index') }}"><i class="ti-home"></i>主 页</a></li>
+                    <li class="active"><a href="{{ url_for('admin.admin_info') }}"><i class="ti-user"></i> 管理员信息</a></li>
+                    <li><a href="{{ url_for('admin.manage_course') }}"><i class="ti-layout"></i>课程管理</a></li>
+                    <li>
+                        <a class="sidebar-sub-toggle"> <i class="ti-panel"></i>用户管理 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{{ url_for('admin.manage_students') }}">学生列表</a></li>
+                            <li><a href="{{ url_for('admin.manage_teachers') }}">教师列表</a></li>
+							<li><a href="{{ url_for('admin.manage_admins') }}">管理员列表</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="{{ url_for('index.all_index') }}"><i class="ti-close"></i>退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+    <!-- /# sidebar -->
+    <div class="header">
+        <div>
+            <a href="{{ url_for('admin.admin_index') }}"><h4>&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理员，您好</h4></a>
+        </div>
+        <div class="pull-right p-r-15">
+             </div>
+                    </div>
+
+    <!-- END chat Sidebar-->
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="main-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card alert">
+                                <div class="card-body">
+									<div class="user-profile">
+										<div class="row">
+											<div class="col-lg-4">
+												<div style="display: flex;align-items: center;justify-content: center">
+													<img src="/admin/static/管理员.png" alt="1" style="width: 150px;height: 150px"/>
+												</div>
+											</div>
+											<div class="col-lg-8">
+												<div class="user-profile-name">姓名:&nbsp;&nbsp;&nbsp;{{ current_admin.Aname }}</div>
+                                                <h6>管理员编号:&nbsp;&nbsp;&nbsp;{{ current_admin.Ano }}</h6>
+												<div class="custom-tab user-profile-tab">
+													<ul class="nav nav-tabs" role="tablist">
+														<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">简介</a></li>
+													</ul>
+													<div class="tab-content">
+														<div role="tabpanel" class="tab-pane active" id="1">
+															<div class="contact-information">
+																<h4>联系方式</h4>
+																<div class="phone-content">
+																	<span class="contact-title">电话:</span>
+																	<span class="phone-number">{{ current_admin.Atel }}</span>
+																</div>
+																<div class="address-content">
+																	<span class="contact-title">地址:</span>
+																	<span class="mail-address">{{ current_admin.Aaddr }}</span>
+																</div>
+																<div class="email-content">
+																	<span class="contact-title">邮箱:</span>
+																	<span class="contact-email">{{ current_admin.Aemail }}</span>
+																</div>
+															</div>
+															<div class="basic-information">
+																<h4>基本信息</h4>
+																<div class="birthday-content">
+																	<span class="contact-title">生日:</span>
+																	<span class="birth-date">{{ current_admin.Abirth }}</span>
+																</div>
+																<div class="gender-content">
+																	<span class="contact-title">性别:</span>
+																	<span class="gender">{{ current_admin.Asex }}</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+                            </div>
+                        </div><!-- /# column -->
+						<div class="col-lg-6">
+							<div class="row">
+<div class="col-lg-3"> </div>
+							</div>
+</div><!-- /# column -->
+
+            </div><!-- /# container-fluid -->
+        </div><!-- /# main -->
+    </div><!-- /# content wrap -->
+
+<script src="/admin/static/js/lib/jquery.min.js"></script>
+<script src="/admin/static/js/lib/jquery.nanoscroller.min.js"></script>
+<script src="/admin/static/js/lib/sidebar.js"></script>
+<script src="/admin/static/js/lib/bootstrap.min.js"></script>
+<script src="/admin/static/js/scripts.js"></script>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

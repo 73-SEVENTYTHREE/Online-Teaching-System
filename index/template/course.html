@@ -1,0 +1,81 @@
+{% extends "framework.html" %}
+{% block content %}
+
+<div class="container">
+
+  <div class="nav-scroller py-2 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 link-secondary" href="{{ url_for('index.all_index') }}" >首页</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.courses') }}">课程</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.teachers') }}">教师阵容</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.help') }}">使用手册</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.contact') }}">联系我们</a>
+    </nav>
+  </div>
+</div>
+<main>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        <div class="col-4">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">软件需求工程</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">本课程的主要任务是在软件工程整体知识的基础上，深入学习并实践软件需求获取与管理的原理、方法和过程，学习并掌握使用UML工具对软件需求进行分析、表达与系统设计。</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">更多</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">软件工程管理</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">本课程的主要任务是研究软件开发过程的项目管理、过程控制、质量保证等方面的知识和工具，熟练CMMI成熟度分级策略。</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">更多</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">软件质量保证与测试</text></svg>
+
+            <div class="card-body">
+              <p class="card-text">本课程主要讲授软件质量保证与测试的发展过程、基本概念、核心思想、基础知识、基本原理、主要方法、基本过程、常用技术和工具。</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">更多</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+  </div>
+</footer>
+
+
+{% endblock content %}

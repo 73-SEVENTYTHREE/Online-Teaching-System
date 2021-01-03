@@ -1,0 +1,269 @@
+{% extends "framework.html" %}
+{% block content %}
+    <div class="row col-12">
+        <div class="col-12 column">
+        <!--导航栏-->
+        <div class="navbar nav-pills navbar-expand-md navbar-light ">
+            <div class="container text-center" style="padding-left: 350px">
+                <img height="150" width="200" src="{{ course.Cover_path }}" class="float-left">
+            </div>
+            <div class="col-md-7 column" style="padding-right: 300px">
+                <div class="card">
+                    <div class="card-body">
+                        <strong>课程名称:{{ course.Cname }}</strong>
+                        <strong>
+                            <p class="card-text">授课教师:
+                        {% for teacher in course.teachers %}
+                            {{ teacher.Tname }}&nbsp;
+                        {% endfor %}
+                        </p>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--介绍栏-->
+        <nav class="navbar navbar-expand-md navbar-light bg-white" >
+            <ul class="nav nav-tabs col-md-12" style="padding-left: 350px">
+                <li class="nav-item" >
+                    <a class="nav-link text-secondary" href="{{ url_for('teacher.teacher_course', Cno=course.Cno) }}">课程简介</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('teacher.manage_courseware', Cno=course.Cno) }}">课件管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-info" href="{{ url_for('teacher.release_homework', Cno=course.Cno) }}">作业发布</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('teacher.correct_homework', Cno=course.Cno) }}">作业批改</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('teacher.manage_students', Cno=course.Cno) }}">成员管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('teacher.discussion', Cno=course.Cno) }}">讨论专区</a>
+                </li>
+            </ul>
+        </nav>
+        <!--页面-->
+        <div class="col-md-8 column card border-0" style="margin-left: auto;margin-right: auto">
+            <p class="col-10" style="padding-top: 20px">
+                <button type="button" class="btn btn-outline-info active" style="margin-right: 15px" data-toggle="collapse" href="#unpublished_homework" role="button" aria-expanded="flase" aria-controls="unpublished_homework">
+                    未发布的作业
+                    <span class="badge badge-light">2</span>
+                </button>
+                <button type="button" class="btn btn-outline-info active" data-toggle="collapse" href="#create_new_homework" role="button" aria-expanded="false" aria-controls="create_new_homework">
+                    创建新的作业
+                </button>
+            </p>
+
+            <!--编辑还没有发布的作业-->
+            <div class="collapse-show" id="unpublished_homework">
+                <div class="col-md-12">
+                    <a href="#Unpublished_Homework_01" class="list-group-item list-group-item-action list-group-item-info" data-toggle="collapse">作业1</a>
+                    <div id="Unpublished_Homework_01">
+                        <!--该作业的基本信息-->
+                        <div class="list-group-item" style="height: 600px">
+                            <form class="col-11" style="float:left">
+
+                                <div class="form-group">
+                                    <label for="Homework01_Name">作业标题</label>
+                                    <input type="text" class="form-control col-8" id="Homework01_Name" placeholder="作业1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Homework01_Introduction">作业简介</label>
+                                    <textarea class="form-control" id="Homework01_Introduction" rows="3" placeholder="对作业的简要描述，可不填"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Homework01_open_data">发布日期</label>
+                                    <input type="data" class="form-control col-8" id="Homework01_open_data" placeholder="2020-11-11 12:00">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Homework01_close_data">截止日期</label>
+                                    <input type="data" class="form-control col-8" id="Homework01_close_data" placeholder="2020-12-25 12:00">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Homework01_percentage">分数占比(本作业在总成绩中占比)</label>
+                                    <input type="number" class="form-control col-1" id="Homework01_percentage" placeholder="5" min="0" max="100">
+                                    <label for="Homework01_percentage" class="form-control-sm text-muted">当前剩余可分配比例为:80％</label>
+                                </div>
+
+                                <div class="form-group row">
+                                    <button type="button" class="col-2 btn btn-outline-info text-center">上传附件</button>
+                                    <button type="button" class="col-2 btn btn-outline-info text-center" style="margin-left: 15px">立刻发布</button>
+                                    <button type="button" class="col-2 btn btn-outline-info text-center" style="margin-left: 15px">删除作业</button>
+                                    <button type="button" class="col-2 btn btn-outline-info text-center" style="margin-left: 15px">新增客观题</button>
+                                    <button type="button" class="col-2 btn btn-outline-info text-center" style="margin-left: 15px">新增主观题</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <!--客观题模板-->
+                        <div class="list-group-item" style="height: 500px">
+                            <form class="col-12" style="float:left">
+
+                                <div class="form-group">
+                                    <label for="Question01_score">本题分数</label>
+                                    <input type="number" class="form-control col-1" id="Question01_score" placeholder="5" min="0" max="100">
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea class="form-control float-left" rows="3">1.题目示例  阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-info">点击上传</button>
+
+                                    <button type="button" class="btn btn-info float-right text-center">删除</button>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="Question01_Check1">
+                                        <label class="form-check-label" for="Question01_Check1">
+                                            A. 这道题选A，此处为选项内容
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="Question01_Check2">
+                                        <label class="form-check-label" for="Question01_Check2">
+                                            B. 这道题选B
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="Question01_Check3">
+                                        <label class="form-check-label" for="Question01_Check3">
+                                            C. 这道题选C
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="Question01_Check4">
+                                        <label class="form-check-label" for="Question01_Check4">
+                                            D. 这道题选D
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                            </form>
+
+                        </div>
+                        <!--主观题模板-->
+                        <div class="list-group-item" style="height: 400px">
+                            <form class="col-11" style="float:left">
+
+                                <div class="form-group">
+                                    <label for="Question02_score">本题分数</label>
+                                    <input type="number" class="form-control col-1" id="Question02_score" placeholder="5" min="0" max="100">
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea class="form-control float-left" rows="3">1.题目示例  阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴</textarea>
+                                </div>
+
+                                <div class="form-group " style="padding-top: 10px">
+                                    <button type="button" class="btn btn-info">点击上传</button>
+                            <button type="button" class="btn btn-info float-right text-center">删除</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <a href="#Unpublished_Homework_02" class="list-group-item list-group-item-action list-group-item-info" data-toggle="collapse">作业2</a>
+                    <div id="Unpublished_Homework_02">
+                        <div class="list-group-item" style="height: 600px">
+                            <form class="col-11" style="float:left">
+
+                                <div class="form-group">
+                                    <label for="Homework02_Name">作业标题</label>
+                                    <input type="text" class="form-control col-8" id="Homework02_Name" placeholder="作业1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Homework02_Introduction">作业简介</label>
+                                    <textarea class="form-control" id="Homework02_Introduction" rows="3" placeholder="对作业的简要描述，可不填"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Homework02_open_data">发布日期</label>
+                                    <input type="data" class="form-control col-8" id="Homework02_open_data" placeholder="2020-11-11 12:00">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Homework02_close_data">截止日期</label>
+                                    <input type="data" class="form-control col-8" id="Homework02_close_data" placeholder="2020-12-25 12:00">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Homework02_percentage">分数占比(本作业在总成绩中占比)</label>
+                                    <input type="number" class="form-control col-1" id="Homework02_percentage" placeholder="5" min="0" max="100">
+                                    <label for="Homework02_percentage" class="form-control-sm text-muted">当前剩余可分配比例为:80％</label>
+                                </div>
+
+                                <div class="form-group row">
+                                    <button type="button" class="col-2 btn btn-outline-info text-center">立刻发布</button>
+                                    <button type="button" class="col-2 btn btn-outline-info text-center" style="margin-left: 15px">删除作业</button>
+                                    <button type="button" class="col-2 btn btn-outline-info text-center" style="margin-left: 15px">新增客观题</button>
+                                    <button type="button" class="col-2 btn btn-outline-info text-center" style="margin-left: 15px">新增主观题</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            <!--创建一个新的作业-->
+            <div class="collapse" id="create_new_homework" style="padding-top: 20px">
+                <div class="col-md-12 card">
+                    <form class="col-11" style="margin-right: auto;margin-left: auto">
+
+                        <div class="form-group form-control-lg text-info" style="padding-top: 30px">
+                            <strong >创建新的作业</strong>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Homework_Name">作业标题</label>
+                            <input type="text" class="form-control col-8" id="Homework_Name" placeholder="请输入作业标题">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Homework_Introduction">作业简介</label>
+                            <textarea class="form-control" id="Homework_Introduction" rows="3" placeholder="对作业的简要描述，可不填"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Homework01_open_data">发布日期</label>
+                            <input type="data" class="form-control col-8" id="Homework_open_data" placeholder="例:2020-02-02 02:02">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Homework01_close_data">截止日期</label>
+                            <input type="data" class="form-control col-8" id="Homework_close_data" placeholder="例:2020-02-02 02:02">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Homework_percentage">分数占比(本作业在总成绩中占比)</label>
+                            <input type="number" class="form-control col-1" id="Homework_percentage" placeholder="0" min="0" max="100">
+                            <label for="Homework_percentage" class="form-control-sm text-muted">当前剩余可分配比例为:80％</label>
+                        </div>
+                        <button type="submit" class="col-2 btn btn-outline-info btn-block border-0 text-center active" style="margin-left: auto;margin-right: auto">上传附件</button>
+                        <button type="submit" class="col-2 btn btn-outline-info btn-block border-0 text-center active" style="margin-left: auto;margin-right: auto">确定</button>
+                        <div class="col-12" style="height: 50px;padding-bottom: 0px"></div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+
+</div>
+    </div>
+{% endblock content %}

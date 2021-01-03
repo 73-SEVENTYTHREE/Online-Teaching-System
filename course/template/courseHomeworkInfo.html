@@ -1,0 +1,170 @@
+{% extends "framework.html" %}
+{% block content %}
+    <div class="row col-12">
+        <div class="col-1 column"></div>
+        <div class="col-2 column">
+              <div class="row clearfix">
+                  <div class="card shadow">
+                    <div class="container text-center" style="padding-top: 1rem; padding-bottom: 1rem;">
+                        <img class="img-fluid rounded" alt="140x140" src="{{ course.Cover_path }}" style="width: 200px; height: 150px">
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="container-fluid text-left" style="padding-bottom: 1rem;">
+                            <a class="btn btn-outline-info btn-block border-0 text-left" href="{{ url_for('course.index', Cno=course.Cno) }}" role="button">
+                                <svg width="1em" height="1em" style="margin-bottom: 0px; margin-right: 5px" viewBox="0 0 16 16" class="bi bi-book" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M1 2.828v9.923c.918-.35 2.107-.692 3.287-.81 1.094-.111 2.278-.039 3.213.492V2.687c-.654-.689-1.782-.886-3.112-.752-1.234.124-2.503.523-3.388.893zm7.5-.141v9.746c.935-.53 2.12-.603 3.213-.493 1.18.12 2.37.461 3.287.811V2.828c-.885-.37-2.154-.769-3.388-.893-1.33-.134-2.458.063-3.112.752zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                                </svg>
+                                <strong>课程简介</strong>
+                            </a>
+                            <a class="btn btn-outline-info btn-block border-0 text-left" href="{{ url_for('course.course_ware', Cno=course.Cno) }}" role="button">
+                                <svg width="1em" height="1em" style="margin-bottom: 0px; margin-right: 5px" viewBox="0 0 16 16" class="bi bi-book" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M1 2.828v9.923c.918-.35 2.107-.692 3.287-.81 1.094-.111 2.278-.039 3.213.492V2.687c-.654-.689-1.782-.886-3.112-.752-1.234.124-2.503.523-3.388.893zm7.5-.141v9.746c.935-.53 2.12-.603 3.213-.493 1.18.12 2.37.461 3.287.811V2.828c-.885-.37-2.154-.769-3.388-.893-1.33-.134-2.458.063-3.112.752zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                                </svg>
+                                <strong>课件查看</strong>
+                            </a>
+                            <a class="btn btn-outline-info btn-block border-0 text-left active" href="{{ url_for('course.my_assignments', Cno=course.Cno) }}" role="button">
+                                <svg width="1em" height="1em" style="margin-bottom: 0px; margin-right: 5px" viewBox="0 0 16 16" class="bi bi-book" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M1 2.828v9.923c.918-.35 2.107-.692 3.287-.81 1.094-.111 2.278-.039 3.213.492V2.687c-.654-.689-1.782-.886-3.112-.752-1.234.124-2.503.523-3.388.893zm7.5-.141v9.746c.935-.53 2.12-.603 3.213-.493 1.18.12 2.37.461 3.287.811V2.828c-.885-.37-2.154-.769-3.388-.893-1.33-.134-2.458.063-3.112.752zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                                </svg>
+                                <strong>我的作业</strong>
+                            </a>
+                            <a class="btn btn-outline-info btn-block border-0 text-left" href="{{ url_for('course.discussion', Cno=course.Cno) }}" role="button">
+                                <svg width="1em" height="1em" style="margin-bottom: 0px; margin-right: 5px" viewBox="0 0 16 16" class="bi bi-book" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M1 2.828v9.923c.918-.35 2.107-.692 3.287-.81 1.094-.111 2.278-.039 3.213.492V2.687c-.654-.689-1.782-.886-3.112-.752-1.234.124-2.503.523-3.388.893zm7.5-.141v9.746c.935-.53 2.12-.603 3.213-.493 1.18.12 2.37.461 3.287.811V2.828c-.885-.37-2.154-.769-3.388-.893-1.33-.134-2.458.063-3.112.752zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                                </svg>
+                                <strong>讨论区</strong>
+                            </a>
+                    </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-9 column">
+               <div class="container border-light shadow" style="padding: 2rem 1rem 2rem 1rem; margin: 0rem;">
+                    <h1>{{ course.Cname }}</h1>
+                <h5>授课教师：
+                    {% for teacher in course.teachers %}
+                        {{ teacher.Tname }}&nbsp;
+                    {% endfor %}
+                </h5>
+                <div class="dropdown-divider" style="margin-top: 1rem; margin-bottom: 1rem;"></div>
+                <div class="list-group-item list-group-item-info">{{ current_assignment.Assign_name }}</div>
+                <div class="list-group-item">
+                    <div class="row">
+                        <div class="col-4 column">
+                            作业开始时间：<strong>{{ current_assignment.Begin_time }}</strong>
+                        </div>
+                        <div class="col-4 column">
+                            作业截止时间：<strong>{{ current_assignment.End_time }}</strong>
+                        </div>
+                        <div class="col-4 column">
+                            该作业占分数比例：<strong>{{ current_assignment.percent }}%</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <p>作业详情：</p>
+                    <p>
+                        {{ current_assignment.Description }}
+                    </p>
+                </div>
+                <div class="list-group-item list-group-item-info" style="margin-top: 2rem;">附件列表</div>
+                {% if annex_name[0] is defined %}
+                    {% for name in annex_name %}
+                        <div class="list-group-item" style="padding-bottom: 1rem;">
+                        <strong>{{ name }}</strong>
+                            <div class="button-group" role="group" style="float: right;">
+                                <form method="post" action="{{ url_for('course.download_homework_annex', filename=name, filepath=homework_path) }}">
+                                    <button type="submit" class="btn btn-info">下载</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                    <strong>该项作业无附件</strong>
+                {% endif %}
+                <div class="container" style="margin-top: 2rem;">
+                    <div class="modal fade" id="homeworkSubmit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="homeworkSubmitLabel">已提交的文件</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                        {% if homework_name[0] is not defined %}
+                                            <p>您还未交作业!</p>
+                                        {% else %}
+                                            {% for name in homework_name %}
+                                                <div class="list-group-item" style="padding-bottom: 1rem;">
+                                                    <strong>{{ name }}</strong>
+                                                    <div class="button-group" role="group" style="float: right;">
+                                                        <form method="post" action="{{ url_for('course.download_my_homework', filepath=homework_path, filename=name) }}">
+                                                            <button type="submit" class="btn btn-info">下载</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                            <div class="dropdown-divider" style="margin-top: 1rem; margin-bottom: 1rem;"></div>
+                                            {% if current_assignment.score is defined %}
+                                                <div class="list-group-item" style="padding-bottom: 1rem;">
+                                                    <strong>该次作业得分为{{ current_assignment.score }}</strong>
+                                                </div>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                  <button type="button" class="btn btn-info">确认</button>
+                                </div>
+                              </div>
+                            </div>
+                    <form action="{{ url_for('course.upload_assignment', Cno=course.Cno, Assign_no=current_assignment.Assign_no) }}" method="post" enctype="multipart/form-data">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"
+                                {% if current_assignment.Remaining_days < 0 %}
+                                    disabled
+                                {% endif %} >提交作业</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">提交作业<strong>（注：相同格式的文件需打包上传！如a1.pdf和a2.pdf）</strong></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="file-loading">
+                                <input id="input-b9" name="homework" type="file">
+                            </div>
+                                <div id="kartik-file-errors"></div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <script>
+                            $(document).ready(function() {
+                                $("#input-b9").fileinput({
+                                    language: 'zh',
+                                    showPreview: false,
+                                    showUpload: true,
+                                    elErrorContainer: '#kartik-file-errors',
+                                    allowedFileExtensions: ["doc", "docx", "ppt", "pptx", "pdf", "md", "jpg", "zip", "rar"]
+                                });
+                            });
+                        </script>
+
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#homeworkSubmit">
+                        查看已提交的文件</button>
+                    </form>
+                </div>
+               </div>
+        </div>
+    </div>
+{% endblock content %}

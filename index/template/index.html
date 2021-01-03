@@ -1,0 +1,104 @@
+{% extends "framework.html" %}
+{% block content %}
+
+<div class="container">
+
+  <div class="nav-scroller py-2 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 link-secondary" href="{{ url_for('index.all_index') }}" >首页</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.courses') }}">课程</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.teachers') }}">教师阵容</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.help') }}">使用手册</a>
+      <a class="p-2 link-secondary" href="{{ url_for('index.contact') }}">联系我们</a>
+    </nav>
+  </div>
+</div>
+
+<main class="container">
+  <div class="p-4 p-md-5 mb-4 text-white rounded" style="background: #17a2b8">
+    <div class="col-md-8 px-0">
+      <h1 class="display-4 font-italic">高校教学平台</h1>
+      <p class="lead my-3">为课堂而生</p>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-md-4">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0">软件需求工程</h3>
+          <div class="mb-1 text-muted"></div>
+          <p class="card-text mb-auto">本课程的主要任务是在软件工程整体知识的基础上，深入学习并实践软件需求获取与管理的原理、方法和过程，学习并掌握使用UML工具对软件需求进行分析、表达与系统设计。</p>
+          <a href="#" class="stretched-link">更多信息...</a>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0">软件工程管理</h3>
+          <p class="mb-auto">本课程的主要任务是研究软件开发过程的项目管理、过程控制、质量保证等方面的知识和工具，熟练CMMI成熟度分级策略。</p>
+          <a href="#" class="stretched-link">更多信息...</a>
+        </div>
+      </div>
+    </div>
+	   <div class="col-md-4">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0">软件质量保证与测试</h3>
+          <p class="mb-auto">本课程主要讲授软件质量保证与测试的发展过程、基本概念、核心思想、基础知识、基本原理、主要方法、基本过程、常用技术和工具。</p>
+          <a href="#" class="stretched-link">更多信息...</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 border-bottom"> 师资储备
+      </h3>
+      <article class="blog-post">
+        <h2 class="blog-post-title">邢卫</h2>
+        <p class="blog-post-meta">副教授 | 硕士生导师</p>
+
+        <p>邢卫，浙江大学计算机科学与技术学院计算机系主任，博士，副教授；硕士生导师，博士生联合导师。长期从事操作系统、计算机网络、软件工程等专业核心课程的教学，并主持计算机系专业培养方案的制定，承担计算机系教学管理工作等。主要研究领域包括人工智能、计算机网络和多媒体技术，作为课题负责人或主要骨干承担国家自然科学基金项目、国家科技攻关计划项目、国家科技支撑计划项目、浙江省重大科技计划项目等多项，获得科研成果3项，获省部级科技奖励2项，获发明专利授权4项，发表学术论文约40篇，持有软件著作权20余项，累计指导博士和硕士研究生40余名。曾援疆赴塔里木大学任职任教一年半，担任信息工程学院副院长、学校信息化工作领导小组办公室常务副主任。</p>
+        <hr>
+      </article><!-- /.blog-post -->
+      <article class="blog-post">
+        <h2 class="blog-post-title">林海</h2>
+        <p class="blog-post-meta">教授 | 博士生导师</p>
+
+        <p>浙江大学CAD&CG国家重点实验室教授/博士生导师。多年来一直从事计算电磁学、计算机图形学、科学计算可视化等方面的研究。作为项目负责人承担国家自然科学基金项目四项，国家863高技术项目三项。曾于2000年9月赴英国De Montfort大学计算机系进行访问研究，参加了欧盟第五框架的项目VAKHUM和MultiMod的研究。</p>
+
+      </article><!-- /.blog-post -->
+
+    </div>
+
+    <div class="col-md-4">
+      <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="font-italic">About</h4>
+        <p class="mb-0">本网站内容均来自高校官方，如果不妥请联系我们删除。</p>
+      </div>
+
+      <div class="p-4">
+        <h4>相关网站</h4>
+        <ol class="list-unstyled">
+          <li><a href="http://www.zju.edu.cn/">浙江大学</a></li>
+          <li><a href="http://www.cs.zju.edu.cn/">浙江大学计算机科学与技术学院</a></li>
+          <li><a href="http://www.cst.zju.edu.cn/">浙江大学软件学院</a></li>
+        </ol>
+      </div>
+    </div>
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<footer class="blog-footer">
+  <p>
+    <a href="#">Back to top</a>
+  </p>
+</footer>
+
+{% endblock content %}

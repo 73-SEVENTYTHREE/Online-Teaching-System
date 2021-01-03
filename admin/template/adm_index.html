@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管理员界面</title>
+    <!-- ================= Favicon ================== -->
+    <!-- Styles -->
+    <link href="/admin/static/css/lib/themify-icons.css" rel="stylesheet">
+    <link href="/admin/static/css/lib/sidebar.css" rel="stylesheet">
+    <link href="/admin/static/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="/admin/static/css/lib/nixon.css" rel="stylesheet">
+    <link href="/admin/static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <li class="active"><a href="{{ url_for('admin.admin_index') }}"><i class="ti-home"></i>主 页</a></li>
+                    <li><a href="{{ url_for('admin.admin_info') }}"><i class="ti-user"></i> 管理员信息</a></li>
+                        <li><a href="{{ url_for('admin.manage_course') }}"><i class="ti-layout"></i>课程管理</a>
+                    </li>
+                    <li>
+                        <a class="sidebar-sub-toggle"> <i class="ti-panel"></i>用户管理 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{{ url_for('admin.manage_students') }}">学生列表</a></li>
+                            <li><a href="{{ url_for('admin.manage_teachers') }}">教师列表</a></li>
+							<li><a href="{{ url_for('admin.manage_admins') }}">管理员列表</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="{{ url_for('index.all_index') }}"><i class="ti-close"></i>退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+    <div class="header">
+        <div>
+            <a href="{{ url_for('admin.admin_index') }}"><h4>&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理员，您好</h4></a>
+        </div>
+        <div class="pull-right p-r-15">
+             </div>
+                    </div>
+
+    <!-- END chat Sidebar-->
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>主页</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-4 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                <div class="main-content">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-two">
+                                    <div class="widget-icon color-1">
+                                        <i class="fas fa-bullseye"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="stat-text">总学生数</div>
+                                        <div class="stat-digit">{{ usr_number }}</div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow={{ p1 }} aria-valuemin="0" aria-valuemax="100" style="width: {{ p1 }}%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# column -->
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-two">
+                                    <div class="widget-icon color-2">
+                                        <i class="fas fa-credit-card"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="stat-text">总课程数</div>
+                                        <div class="stat-digit">{{ course_number }}</div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow={{ p3 }} aria-valuemin="0" aria-valuemax="100" style="width: {{ p3 }}%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# column -->
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-two">
+                                    <div class="widget-icon color-3">
+                                        <i class="fas fa-tasks"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="stat-text">总教师数</div>
+                                        <div class="stat-digit">{{ teacher_number }}</div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow={{ p2 }} aria-valuemin="0" aria-valuemax="100" style="width: {{ p2 }}%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# column -->
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-two">
+                                    <div class="widget-icon color-4">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="stat-text">总管理员数</div>
+                                        <div class="stat-digit">{{ admin_number }}</div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow={{ p4 }} aria-valuemin="0" aria-valuemax="100" style="width: {{ p4 }}%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# column -->
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div id="lobipanel-custom-control" class="card alert panel panel-default">
+                                <div class="card-header">
+                                    <h4>快捷入口</h4>
+                               
+                                </div>
+                                <div class="card-body panel-body">
+                                    <table class="table table-responsive table-hover ">
+                                        <tbody>
+                                            <tr>
+                                                <td class="no-border">添加管理员</td>
+                                                <td class="no-border"><a class="btn btn-outline-secondary" href="#">跳转</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>添加学生</td>
+                                                <td><a class="btn btn-outline-secondary" href="#">跳转</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>添加课程</td>
+                                                <td><a class="btn btn-outline-secondary" href="#">跳转</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# column -->
+                        <div class="col-lg-4">
+                            <div class="card alert">
+                                <div class="card-header">
+                                    <h4>待办事项</h4>
+                                </div>
+                                <div class="todo-list">
+                                    <div class="tdl-holder">
+                                        <div class="tdl-content">
+                                            <ul>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox"><i></i><span>更新信息</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked><i></i><span>删除违规评论</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox"><i></i><span>日常维护</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <label>
+                                            <input type="text" class="tdl-new form-control" placeholder="请在此处写下您的待办事项...">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+         </div>
+</div>
+ </div>
+ <!-- /# container-fluid -->
+</div>
+<!-- /# main -->
+</div>
+
+<script src="/admin/static/js/lib/jquery.min.js"></script>
+<script src="/admin/static/js/lib/jquery.nanoscroller.min.js"></script>
+<script src="/admin/static/js/lib/sidebar.js"></script>
+<script src="/admin/static/js/lib/bootstrap.min.js"></script>
+<script src="/admin/static/js/scripts.js"></script>
+
+</body>
+
+</html>
