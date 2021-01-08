@@ -1,4 +1,4 @@
-from flask import render_template, request, flash, make_response, url_for, redirect, Blueprint, session
+from flask import render_template, request, flash, Blueprint, session
 from sqlalchemy import text
 from models import Student, Course
 import sys

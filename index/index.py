@@ -1,7 +1,5 @@
-from flask import render_template, request, flash, make_response, url_for, redirect, Blueprint, session
-from sqlalchemy import text
+from flask import render_template, request, flash, url_for, redirect, Blueprint, session
 from models import Student, Teacher, Admin, Assistant
-import time
 from models import db
 
 index = Blueprint('index', __name__, template_folder='template', static_url_path='static')

@@ -6,13 +6,12 @@ from course.course import course
 from admin.admin import admin
 from flask import Flask
 from models import db
-from config import Config, project_website
-from models import Teacher, Admin, Student, Assistant, Course, Comment, Assignment, Document, Discussion
+from config import Config
+from models import Teacher, Admin, Student, Assistant, Course, Assignment, Document, Discussion
 from flask_bootstrap import Bootstrap
 import importlib
 import sys
 import pymysql
-from flask_sqlalchemy import SQLAlchemy
 from course.course import create_preview_address
 
 pymysql.install_as_MySQLdb()

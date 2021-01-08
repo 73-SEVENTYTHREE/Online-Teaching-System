@@ -9,7 +9,6 @@ from config import project_website
 from models import Course, Document, Assignment, Discussion
 from models import Student
 from models import db
-from filetype import filetype
 from werkzeug.utils import secure_filename
 
 course = Blueprint('course', __name__, template_folder='template', static_folder='static')

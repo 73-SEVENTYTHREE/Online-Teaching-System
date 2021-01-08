@@ -1,10 +1,5 @@
-from flask import render_template, request, flash, make_response, url_for, redirect, Blueprint, session
-from sqlalchemy import text
+from flask import render_template, flash, make_response, url_for, redirect, Blueprint, session
 from models import Student, Course, Teacher, Admin
-import sys
-from models import db
-import os
-from werkzeug.utils import secure_filename
 from io import BytesIO
 import xlsxwriter
 
@@ -29,7 +24,7 @@ def create_courses_flie(courses):
 
 @admin.before_request
 def before_admin():
-    if 'identity' in session and session['identity'] == 'admin':  # 如果身份是学生就通过
+    if 'identity' in session and session['identity'] == 'admin':  # 如果身份是管理员就通过
         pass
     else:  # 否则返回登录界面
         flash('您还未用管理员账号登录！', 'danger')
