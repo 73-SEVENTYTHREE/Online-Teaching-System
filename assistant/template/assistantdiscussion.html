@@ -82,7 +82,7 @@
                                                 {% if post.poster_identity == '教师' %}
                                                     <img src="/teacher/static/avatar/identity.png" style="width: 25px; height: 25px" alt="教师">
                                                 {% endif %}
-                                                <a href="{{ url_for('teacher.discussion_info',post_id=post.Discuss_no, Cno=course.Cno) }}" class="text-reset text-info font-weight-bold">【置顶】{{ post.Discuss_title }}</a>
+                                                <a href="{{ url_for('assistant.discussion_info',post_id=post.Discuss_no, Cno=course.Cno) }}" class="text-reset text-info font-weight-bold">【置顶】{{ post.Discuss_title }}</a>
                                             </td>
                                             {% if post.poster_identity == '学生' %}
                                                 <td>{{ post.students[0].Sname }}</td>
@@ -104,7 +104,7 @@
                                                 {% if post.poster_identity == '教师' %}
                                                     <img src="/teacher/static/avatar/identity.png" style="width: 25px; height: 25px" alt="教师">
                                                 {% endif %}
-                                                <a href="{{ url_for('teacher.discussion_info',post_id=post.Discuss_no, Cno=course.Cno) }}" class="text-reset text-info">{{ post.Discuss_title }}</a>
+                                                <a href="{{ url_for('assistant.discussion_info',post_id=post.Discuss_no, Cno=course.Cno) }}" class="text-reset text-info">{{ post.Discuss_title }}</a>
                                             </td>
                                             {% if post.poster_identity == '学生' %}
                                                 <td>{{ post.students[0].Sname }}</td>

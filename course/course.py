@@ -6,7 +6,7 @@ from flask import render_template, request, Blueprint, session, \
     send_from_directory, flash, redirect, url_for
 
 from config import project_website
-from models import Course, Document, Assignment, Discussion
+from models import Course, Document, Assignment, Discussion, Comment
 from models import Student
 from models import db
 from werkzeug.utils import secure_filename
@@ -72,7 +72,18 @@ def generate_homework_path(Cno, Sno, Assignment):
 def index(Cno):
     current_student, courses = get_info()
     current_course = Course.query.filter_by(Cno=Cno)
-    return render_template('courseMain.html', course=current_course[0], student=current_student[0])
+    comments = current_course[0].comments
+    comments_len = 0
+    total = 0
+    for i in comments:
+        comments_len += 1
+        total += int(i.Course_score)
+    if comments_len != 0:
+        average = total / comments_len
+    else:
+        average = 0
+    return render_template('courseMain.html', course=current_course[0], student=current_student[0], comments=comments,
+                           comments_len=comments_len, average=average)
 
 
 @course.route('/course_ware/<Cno>', methods=['GET', 'POST'])
@@ -239,3 +250,24 @@ def new_post():
         flash('发帖成功！', 'success')
         return redirect(url_for('course.discussion', Cno=Cno))
 
+
+@course.route('/comment', methods=['GET', 'POST'])
+def comment():
+    current_student, courses = get_info()
+    Cno = request.args.get('Cno')
+    print(Cno)
+    current_course = Course.query.filter_by(Cno=Cno).all()
+    if request.method == 'POST':
+        score = request.form.get('score')
+        content = request.form.get('content')
+        isAnonymous = request.form.get('isAnonymous')
+        new_comment = Comment(Course_score=score, Content=content)
+        current_course[0].comments.append(new_comment)
+        if isAnonymous == "1":
+            new_comment.students.append(get_Anonymous())
+        else:
+            new_comment.students.append(current_student[0])
+        db.session.add(new_comment)
+        db.session.commit()
+        flash('评价成功！', 'success')
+    return render_template('courseComment.html', course=current_course[0], student=current_student[0])

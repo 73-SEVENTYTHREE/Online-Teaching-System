@@ -129,7 +129,7 @@ class Comment(db.Model):
     # 定义字段
     Comment_no = db.Column(db.Integer, autoincrement=True, primary_key=True)
     Course_score = db.Column(db.Integer)
-    Content = db.Column(db.String(100))
+    Content = db.Column(db.String(300))
 
 
 # 学生
@@ -212,7 +212,6 @@ class Assistant(db.Model):
     Astel = db.Column(db.String(15))
     Asaddr = db.Column(db.String(30))
     avatar_path = db.Column(db.String(100), default="/assistant/static/avatar/default.jpg")
-
 
 
 # 课程

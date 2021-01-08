@@ -52,9 +52,9 @@ def create_app(assistant=assistant):
     Doc1 = Document(Doc_no=1, Doc_name="客户投诉处理.pptx", Doc_path="static/files/100001/chapter1/courseware", Doc_type="pptx",
                     Doc_chapter=7, Doc_description="客户投诉处理相关事务", Doc_authority='可下载')
     Ass1 = Assignment(Assign_no=1, Assign_path='static/files/100001/chapter1', Begin_time='2020-12-31 10:00:20',
-                      End_time='2021-1-3 11:30:20', Description='平时作业1，请大家参照作业要求的ppt完成', Assign_chapter=7,
+                      End_time='2021-1-30 11:30:20', Description='平时作业1，请大家参照作业要求的ppt完成', Assign_chapter=7,
                       Assign_name='C1.3作业', type='docx', percent=15, score=90)
-    Ass2 = Assignment(Assign_no=2, Assign_path='static/files/100001/chapter1', Begin_time='2020-12-31 10:00:45',
+    Ass2 = Assignment(Assign_no=2, Assign_path='static/files/100001/chapter1', Begin_time='2020-12-15 10:00:45',
                       End_time='2020-12-25 11:11:45', Description='平时作业2，请大家参照模板完成', Assign_chapter=8,
                       Assign_name='C1.4作业', type='docx', percent=15)
     Doc1.Doc_preview_address = create_preview_address(Doc1)
