@@ -19,6 +19,7 @@
         <option value="$MODULE_DIR$/index/template" />
         <option value="$MODULE_DIR$/student/template" />
         <option value="$MODULE_DIR$/teacher/template" />
+        <option value="$MODULE_DIR$/assistant/template" />
       </list>
     </option>
   </component>

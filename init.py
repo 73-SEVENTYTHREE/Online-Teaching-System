@@ -4,6 +4,7 @@ from index.index import index
 from student.student import student
 from course.course import course
 from admin.admin import admin
+from assistant.assistant import assistant
 from flask import Flask
 from models import db
 from config import Config
@@ -19,7 +20,7 @@ importlib.reload(sys)
 bootstrap = Bootstrap()
 
 
-def create_app():
+def create_app(assistant=assistant):
     app = Flask(__name__)
     app.config.from_object(Config)
     db.init_app(app)
@@ -28,6 +29,7 @@ def create_app():
     app.register_blueprint(student, url_prefix='/student')
     app.register_blueprint(course, url_prefix='/course')
     app.register_blueprint(admin, url_prefix='/admin')
+    app.register_blueprint(assistant, url_prefix='/assistant')
     app.app_context().push()
     bootstrap.init_app(app)
     t1 = Teacher(Tno="20201217", Tname="金波", Tpw="123456", Tsex="男", Tage=40, Ttel="13700000000", Taddr="浙江省杭州市西湖区浙大路38号",
@@ -88,6 +90,7 @@ def create_app():
     course1.students = [s1]
     course1.assignments = [Ass1, Ass2]
     course1.discussions = [D1, D2, D3]
+    course1.assistants = [assistant]
     D1.students = [s1]
     s2.discussions = [D2]
     course1.documents = [Doc1]

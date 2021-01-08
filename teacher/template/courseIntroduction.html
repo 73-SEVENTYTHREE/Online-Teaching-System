@@ -49,7 +49,7 @@
         <div class="col-12 column bg-light">
             <div class="container col-8 border border-0 rounded rounded-lg card">
                 <div class="container" style="padding-top: 2rem">
-                    <button type="button" class="col-2 btn btn-info float-right">编辑课程信息</button>
+                    <a href="{{ url_for('teacher.teacher_change_course', Cno=course.Cno) }}" type="button" class="col-2 btn btn-info float-right">编辑课程信息</a>
                 </div>
                 <div class="container" style="padding-top: 1rem">
                     <div class="row">

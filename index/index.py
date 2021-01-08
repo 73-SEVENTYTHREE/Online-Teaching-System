@@ -102,10 +102,10 @@ def login():
         if identity == "option3":
             assistant = Assistant.query.filter_by(Asno=username).all()
             if assistant:
-                if pwd == assistant[0].Apw:
+                if pwd == assistant[0].Aspw:
                     session['identity'] = 'assistant'
-                    session['no'] = assistant[0].Ano
-                    return render_template("")
+                    session['no'] = assistant[0].Asno
+                    return redirect(url_for('assistant.assistant_main'))
                 else:
                     flash("用户名或密码输入错误！", 'warning')
             else:

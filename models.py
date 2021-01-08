@@ -14,13 +14,11 @@ tb_teacher_course = db.Table('tb_teacher_course',
                              db.Column('Cno', db.String(10), db.ForeignKey('course.Cno'))
                              )
 
-
 # 助教和课程关系表
 tb_assistant_course = db.Table('tb_assistant_course',
-                             db.Column('Asno', db.String(10), db.ForeignKey('assistant.Asno')),
-                             db.Column('Cno', db.String(10), db.ForeignKey('course.Cno'))
-                             )
-
+                               db.Column('Asno', db.String(10), db.ForeignKey('assistant.Asno')),
+                               db.Column('Cno', db.String(10), db.ForeignKey('course.Cno'))
+                               )
 
 # 课程评价和课程关系表
 tb_comment_course = db.Table('tb_comment_course',
@@ -213,6 +211,8 @@ class Assistant(db.Model):
     Asage = db.Column(db.Integer)
     Astel = db.Column(db.String(15))
     Asaddr = db.Column(db.String(30))
+    avatar_path = db.Column(db.String(100), default="/assistant/static/avatar/default.jpg")
+
 
 
 # 课程
@@ -232,6 +232,10 @@ class Course(db.Model):
                                secondary=tb_student_course,
                                backref='courses',
                                lazy='dynamic')
+    assistants = db.relationship('Assistant',
+                                 secondary=tb_assistant_course,
+                                 backref='courses',
+                                 lazy='dynamic')
     teachers = db.relationship('Teacher',
                                secondary=tb_teacher_course,
                                backref='courses',

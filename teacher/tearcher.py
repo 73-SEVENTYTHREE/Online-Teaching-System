@@ -1,6 +1,4 @@
 from flask import render_template, request, Blueprint, session
-from io import BytesIO
-from sqlalchemy import text
 from models import Teacher, Course, Discussion
 
 teacher = Blueprint('teacher', __name__, template_folder='template', static_folder='static')
@@ -43,6 +41,14 @@ def teacher_course():
 def new_course():
     current_teacher, courses = get_info()
     return render_template('teacherNewCourse.html', teacher=current_teacher[0], courses=courses)
+
+
+@teacher.route("/teacher_change_course", methods=['GET', 'POST'])
+def teacher_change_course():
+    current_teacher, courses = get_info()
+    Cno = request.args.get('Cno')
+    current_course = Course.query.filter_by(Cno=Cno).all()
+    return render_template('courseChangeIntroduction.html', teacher=current_teacher[0], course=current_course[0])
 
 
 @teacher.route("/change_pwd", methods=['GET', 'POST'])
