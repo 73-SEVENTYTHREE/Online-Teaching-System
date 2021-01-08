@@ -1,0 +1,107 @@
+{% extends "framework.html" %}
+{% block content %}
+    <div class="row col-12">
+
+    <div class="col-12 column">
+        <div class="navbar nav-pills navbar-expand-md navbar-light ">
+            <div class="container text-center" style="padding-left: 350px">
+                <img height="150" width="200" src="{{ course.Cover_path }}" class="float-left">
+            </div>
+            <div class="col-md-7 column" style="padding-right: 300px">
+                <div class="card">
+                    <div class="card-body">
+                        <strong>课程名称:{{ course.Cname }}</strong>
+                        <strong>
+                            <p class="card-text">授课教师:
+                        {% for teacher in course.teachers %}
+                            {{ teacher.Tname }}&nbsp;
+                        {% endfor %}
+                        </p>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--介绍栏-->
+        <nav class="navbar navbar-expand-md navbar-light">
+            <ul class="nav nav-tabs col-md-12" style="padding-left: 350px">
+                <li class="nav-item" >
+                    <a class="nav-link active text-info" href="{{ url_for('assistant.assistant_course', Cno=course.Cno) }}">课程简介</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.manage_courseware', Cno=course.Cno) }}">课件管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.release_homework', Cno=course.Cno) }}">作业发布</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.correct_homework', Cno=course.Cno) }}">作业批改</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.manage_students', Cno=course.Cno) }}">成员管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.discussion', Cno=course.Cno) }}">讨论专区</a>
+                </li>
+            </ul>
+        </nav>
+        <!--页面-->
+        <div class="col-12 column bg-light">
+            <div class="container col-8 border border-0 rounded rounded-lg card">
+                <div class="container" style="padding-top: 2rem">
+                    <button type="button" class="col-2 btn btn-info float-right">编辑课程信息</button>
+                </div>
+                <div class="container" style="padding-top: 1rem">
+                    <div class="row">
+                        <div class="col-2">课程封面</div>
+                        <div class="col-10">
+                            <img class="img-fluid border-light" src="{{ course.Cover_path }}" class="float-left" style="width: 250px; height: 150px">
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="padding-top: 2rem">
+                    <div class="row">
+                        <div class="col-2">课程名称</div>
+                        <div class="col-10 text-muted">{{ course.Cname }}</div>
+                    </div>
+                </div>
+                <div class="container" style="padding-top: 2rem">
+                    <div class="row">
+                        <div class="col-2">课程编号</div>
+                        <div class="col-10 text-muted">{{ course.Cno }}</div>
+                    </div>
+                </div>
+                <div class="container" style="padding-top: 2rem">
+                    <div class="row">
+                        <div class="col-2">授课教师</div>
+                        <div class="col-10 text-muted">
+                            {% for teacher in course.teachers %}
+                            {{ teacher.Tname }}&nbsp;
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="padding-top: 2rem">
+                    <div class="row">
+                        <div class="col-2">课程类别</div>
+                        <div class="col-10 text-muted">{{ course.Ctype }}</div>
+                    </div>
+                </div>
+                <div class="container" style="padding-top: 2rem">
+                    <div class="row">
+                        <div class="col-2">课程时间</div>
+                        <div class="col-10 text-muted">{{ course.Ctime }}</div>
+                    </div>
+                </div>
+                <div class="container" style="padding-top: 2rem">
+                    <div class="row">
+                        <div class="col-2">课程介绍</div>
+                        <div class="col-8 text-muted">{{ course.introduction }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock content %}

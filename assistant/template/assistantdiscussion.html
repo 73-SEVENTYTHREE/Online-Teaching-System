@@ -1,0 +1,137 @@
+{% extends "framework.html" %}
+{% block content %}
+    <div class="row col-12">
+        <div class="col-12 column">
+        <!--导航栏-->
+        <div class="navbar nav-pills navbar-expand-md navbar-light ">
+            <div class="container text-center" style="padding-left: 350px">
+                <img height="150" width="200" src="{{ course.Cover_path }}" class="float-left">
+            </div>
+            <div class="col-md-7 column" style="padding-right: 300px">
+                <div class="card">
+                    <div class="card-body">
+                        <strong>课程名称:{{ course.Cname }}</strong>
+                        <strong>
+                            <p class="card-text">授课教师:
+                        {% for teacher in course.teachers %}
+                            {{ teacher.Tname }}&nbsp;
+                        {% endfor %}
+                        </p>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--介绍栏-->
+        <nav class="navbar navbar-expand-md navbar-light bg-white" >
+            <ul class="nav nav-tabs col-md-12" style="padding-left: 350px">
+                <li class="nav-item" >
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.assistant_course', Cno=course.Cno) }}">课程简介</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.manage_courseware', Cno=course.Cno) }}">课件管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.release_homework', Cno=course.Cno) }}">作业发布</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.correct_homework', Cno=course.Cno) }}">作业批改</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.manage_students', Cno=course.Cno) }}">成员管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-info" href="{{ url_for('assistant.discussion', Cno=course.Cno) }}">讨论专区</a>
+                </li>
+            </ul>
+        </nav>
+        <!--页面-->
+        <div class="col-9 column card border-0" style="margin-left: auto;margin-right: auto">
+            <div class="container border-light shadow" style="padding: 2rem 1rem 2rem 1rem; margin: 0rem">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-8 column">
+                            <h1>{{ course.Cname }}课程讨论区</h1>
+                        </div>
+                        <div class="col-4 column">
+                            <a style="float: right" href="#">
+                                <img src="/course/static/post.png" style="width: 43px; height: 43px" alt="我要发贴"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown-divider" style="margin-top: 1rem; margin-bottom: 1rem;"></div>
+                <div class="container border shadow" style="padding:0rem; margin-top: 1rem;">
+                    {% if posts[0] is defined %}
+                        <table class="table table-bordered table-hover" style="margin: 0rem;">
+                            <thead>
+                              <tr class="">
+                                <th scope="col">回复数</th>
+                                <th scope="col">标题</th>
+                                <th scope="col">发帖人</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for post in posts %}
+                                    {% if post.isTop == 1 and post.isNew == 1 %}
+                                        <tr>
+                                            <td scope="row">{{ post.reply_amount }}</td>
+                                            <td>
+                                                {% if post.poster_identity == '学生' %}
+                                                    <img src="/student/static/avatar/identity.png" style="width: 25px; height: 25px" alt="学生">
+                                                {% endif %}
+                                                {% if post.poster_identity == '教师' %}
+                                                    <img src="/teacher/static/avatar/identity.png" style="width: 25px; height: 25px" alt="教师">
+                                                {% endif %}
+                                                <a href="{{ url_for('teacher.discussion_info',post_id=post.Discuss_no, Cno=course.Cno) }}" class="text-reset text-info font-weight-bold">【置顶】{{ post.Discuss_title }}</a>
+                                            </td>
+                                            {% if post.poster_identity == '学生' %}
+                                                <td>{{ post.students[0].Sname }}</td>
+                                            {% endif %}
+                                            {% if post.poster_identity == '教师' %}
+                                                <td>{{ post.teachers[0].Tname }}</td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                {% for post in posts %}
+                                    {% if post.isTop == 0 and post.isNew == 1 %}
+                                        <tr>
+                                            <td scope="row">{{ post.reply_amount }}</td>
+                                            <td>
+                                                {% if post.poster_identity == '学生' %}
+                                                    <img src="/student/static/avatar/identity.png" style="width: 25px; height: 25px" alt="学生">
+                                                {% endif %}
+                                                {% if post.poster_identity == '教师' %}
+                                                    <img src="/teacher/static/avatar/identity.png" style="width: 25px; height: 25px" alt="教师">
+                                                {% endif %}
+                                                <a href="{{ url_for('teacher.discussion_info',post_id=post.Discuss_no, Cno=course.Cno) }}" class="text-reset text-info">{{ post.Discuss_title }}</a>
+                                            </td>
+                                            {% if post.poster_identity == '学生' %}
+                                                <td>{{ post.students[0].Sname }}</td>
+                                            {% endif %}
+                                            {% if post.poster_identity == '教师' %}
+                                                <td>{{ post.teachers[0].Tname }}</td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="container" style="padding: 0rem; margin-top: 2rem;">
+                </div>
+                    {% else %}
+                        <br>
+                        <br>
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                            <h5><strong>该门课程还没人发帖</strong></h5>
+                        </div>
+                        <br>
+                        <br>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+</div>
+    </div>
+{% endblock content %}

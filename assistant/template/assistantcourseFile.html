@@ -1,0 +1,183 @@
+{% extends "framework.html" %}
+{% block content %}
+    <div class="row col-12">
+        <div class="col-12 column">
+        <!--导航栏-->
+        <div class="navbar nav-pills navbar-expand-md navbar-light ">
+            <div class="container text-center" style="padding-left: 350px">
+                <img height="150" width="200" src="{{ course.Cover_path }}" class="float-left">
+            </div>
+            <div class="col-md-7 column" style="padding-right: 300px">
+                <div class="card">
+                    <div class="card-body">
+                        <strong>课程名称:{{ course.Cname }}</strong>
+                        <strong>
+                            <p class="card-text">授课教师:
+                        {% for teacher in course.teachers %}
+                            {{ teacher.Tname }}&nbsp;
+                        {% endfor %}
+                        </p>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--介绍栏-->
+        <nav class="navbar navbar-expand-md navbar-light bg-white" >
+            <ul class="nav nav-tabs col-md-12" style="padding-left: 350px">
+               <li class="nav-item" >
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.assistant_course', Cno=course.Cno) }}">课程简介</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-info" href="{{ url_for('assistant.manage_courseware', Cno=course.Cno) }}">课件管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.release_homework', Cno=course.Cno) }}">作业发布</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.correct_homework', Cno=course.Cno) }}">作业批改</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.manage_students', Cno=course.Cno) }}">成员管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.discussion', Cno=course.Cno) }}">讨论专区</a>
+                </li>
+            </ul>
+        </nav>
+        <!--页面-->
+        <div class="col-md-8 column card border-0" style="margin-left: auto;margin-right: auto">
+            <div class="card-body col-md-12" >
+                <div class="col-12">
+                    <!--上传文件-->
+                    <button class="btn btn-outline-info border-0 text-center active float-right" data-toggle="modal" data-target="#upload_files">
+                        <strong>+ 上传文件</strong>
+                    </button>
+                    <div class="modal fade" id="upload_files" tabindex="-1" role="dialog" aria-labelledby="upload_files_Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="upload_files_Label">请选择您要上传的文件</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">确定</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- 创建新章节-->
+                    <button class="btn btn-outline-info border-0 text-center active" data-toggle="modal" data-target="#create_chapter">
+                        <strong>新增章节</strong>
+                    </button>
+                    <div class="modal fade" id="create_chapter" tabindex="-1" role="dialog" aria-labelledby="create_chapter_Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="create_chapter_Label">请输入新增章节名称</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">确定</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--删除章节-->
+                    <button class="btn btn-outline-info border-0 text-center active" data-toggle="modal" data-target="#delete_chapter">
+                        <strong>删除章节</strong>
+                    </button>
+                    <div class="modal fade" id="delete_chapter" tabindex="-1" role="dialog" aria-labelledby="delete_chapter_Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="delete_chapter_Label">请选择您要删除的章节</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">确定</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container col-12 border border-0 rounded rounded-lg card"  style="line-height: 30px;">
+                        <a href="#softwareManagement01" class=" list-group-item list-group-item-action list-group-item-info" data-toggle="collapse">第一章</a>
+                        <div id="softwareManagement01">
+                            <div class="list-group-item">
+                                <a class="col-1">文件1</a>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">删除</button>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">下载</button>
+                                <a class="col-3 float-right text-left">文件大小：721MB</a>
+                            </div>
+                            <div class="list-group-item">
+                                <a class="col-1">文件2</a>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">删除</button>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">下载</button>
+                                <a class="col-3 float-right text-left">文件大小：36MB</a>
+                            </div>
+                            <div class="list-group-item">
+                                <a class="col-1">文件3</a>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">删除</button>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">下载</button>
+                                <a class="col-3 float-right text-left">文件大小：5MB</a>
+                            </div>
+                        </div>
+
+
+                        <a href="#softwareManagement02" class="list-group-item list-group-item-action list-group-item-info" data-toggle="collapse">第二章</a>
+                        <div id="softwareManagement02">
+                            <div class="list-group-item">
+                                <a class="col-1">文件1</a>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">删除</button>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">下载</button>
+                                <a class="col-3 float-right text-left">文件大小：721MB</a>
+                            </div>
+                            <div class="list-group-item">
+                                <a class="col-1">文件2</a>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">删除</button>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">下载</button>
+                                <a class="col-3 float-right text-left">文件大小：36MB</a>
+                            </div>
+                            <div class="list-group-item">
+                                <a class="col-1">文件3</a>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">删除</button>
+                                <button type="button" class="col-0 btn btn-sm btn-link text-dark float-right text-center">下载</button>
+                                <a class="col-3 float-right text-left">文件大小：5MB</a>
+                            </div>
+                        </div>
+
+
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-info">第三章</a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-info">第四章</a>
+
+            </div>
+        </div>
+
+</div>
+    </div>
+{% endblock content %}

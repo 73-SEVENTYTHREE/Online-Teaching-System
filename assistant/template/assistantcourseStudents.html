@@ -1,0 +1,158 @@
+{% extends "framework.html" %}
+{% block content %}
+    <div class="row col-12">
+        <div class="col-12 column">
+        <!--导航栏-->
+        <div class="navbar nav-pills navbar-expand-md navbar-light ">
+            <div class="container text-center" style="padding-left: 350px">
+                <img height="150" width="200" src="{{ course.Cover_path }}" class="float-left">
+            </div>
+            <div class="col-md-7 column" style="padding-right: 300px">
+                <div class="card">
+                    <div class="card-body">
+                        <strong>课程名称:{{ course.Cname }}</strong>
+                        <strong>
+                            <p class="card-text">授课教师:
+                        {% for teacher in course.teachers %}
+                            {{ teacher.Tname }}&nbsp;
+                        {% endfor %}
+                        </p>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--介绍栏-->
+        <nav class="navbar navbar-expand-md navbar-light bg-white" >
+            <ul class="nav nav-tabs col-md-12" style="padding-left: 350px">
+                <li class="nav-item" >
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.assistant_course', Cno=course.Cno) }}">课程简介</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.manage_courseware', Cno=course.Cno) }}">课件管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.release_homework', Cno=course.Cno) }}">作业发布</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.correct_homework', Cno=course.Cno) }}">作业批改</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-info" href="{{ url_for('assistant.manage_students', Cno=course.Cno) }}">成员管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.discussion', Cno=course.Cno) }}">讨论专区</a>
+                </li>
+            </ul>
+        </nav>
+        <!--页面-->
+        <div class="col-md-8 column card border-0" style="margin-left: auto;margin-right: auto">
+
+            <div class="card-body col-md-12" >
+                <div class="col-12">
+                    <!--上传文件-->
+                    <button class="btn btn-outline-info border-0 text-center active float-right" data-toggle="modal" data-target="#upload_files">
+                        <strong>导出成员名单</strong>
+                    </button>
+                    <div class="modal fade" id="upload_files" tabindex="-1" role="dialog" aria-labelledby="upload_files_Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="upload_files_Label">请选择您导出的文件类型</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">确定</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 创建新章节-->
+                    <button class="btn btn-outline-info border-0 text-center active" data-toggle="modal" data-target="#create_chapter">
+                        <strong>添加学生</strong>
+                    </button>
+                    <div class="modal fade" id="create_chapter" tabindex="-1" role="dialog" aria-labelledby="create_chapter_Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="create_chapter_Label">请输入您想要添加的学生的学号</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">确定</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--删除章节-->
+                    <button class="btn btn-outline-info border-0 text-center active" style="margin-left: 15px" data-toggle="modal" data-target="#delete_chapter">
+                        <strong>删除学生</strong>
+                    </button>
+                    <div class="modal fade" id="delete_chapter" tabindex="-1" role="dialog" aria-labelledby="delete_chapter_Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="delete_chapter_Label">请输入您想要删除的学生的学号</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">确定</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-striped">
+                <caption></caption>
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>学号</th>
+                    <th>班级</th>
+                    <th>成绩</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>王小明</td>
+                    <td>3180100000</td>
+                    <td>软工1802</td>
+                    <td>85</td>
+                </tr>
+                <tr>
+                    <td>韩梅梅</td>
+                    <td>3180100001</td>
+                    <td>计科1801</td>
+                    <td>84</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+</div>
+    </div>
+{% endblock content %}

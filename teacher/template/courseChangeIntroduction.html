@@ -1,0 +1,153 @@
+{% extends "framework.html" %}
+{% block content %}
+    <div class="row col-12">
+
+    <div class="col-12 column">
+        <div class="navbar nav-pills navbar-expand-md navbar-light ">
+            <div class="container text-center" style="padding-left: 350px">
+                <img height="150" width="200" src="{{ course.Cover_path }}" class="float-left">
+            </div>
+            <div class="col-md-7 column" style="padding-right: 300px">
+                <div class="card">
+                    <div class="card-body">
+                        <strong>课程名称:{{ course.Cname }}</strong>
+                        <strong>
+                            <p class="card-text">授课教师:
+                        {% for teacher in course.teachers %}
+                            {{ teacher.Tname }}&nbsp;
+                        {% endfor %}
+                        </p>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--介绍栏-->
+        <nav class="navbar navbar-expand-md navbar-light">
+            <ul class="nav nav-tabs col-md-12" style="padding-left: 350px">
+                <li class="nav-item" >
+                    <a class="nav-link active text-info" href="{{ url_for('teacher.teacher_course', Cno=course.Cno) }}">课程简介</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('teacher.manage_courseware', Cno=course.Cno) }}">课件管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('teacher.release_homework', Cno=course.Cno) }}">作业发布</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('teacher.correct_homework', Cno=course.Cno) }}">作业批改</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('teacher.manage_students', Cno=course.Cno) }}">成员管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('teacher.discussion', Cno=course.Cno) }}">讨论专区</a>
+                </li>
+            </ul>
+        </nav>
+        <!--页面-->
+        <div class="col-12 column bg-light">
+            <div class="container col-8 border border-0 rounded rounded-lg card">
+                <div class="container" style="padding-top: 1rem; margin-bottom: 2rem;">
+                    <div class="row">
+                        <div class="col-2">课程封面</div>
+                        <div class="col-10">
+                            <div>
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#uploadCover" style="padding-bottom: 1rem;">上传课程封面</button>
+                            </div> 
+                            <!-- Modal -->
+                            <div class="modal fade" id="uploadCover" tabindex="-1" role="dialog" aria-labelledby="uploadCoverLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="uploadCoverLabel">上传课程封面</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="file-loading">
+                                                <input id="input-b9" name="file" type="file">
+                                            </div>
+                                            <div id="kartik-file-errors"></div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-info">上传</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                $(document).ready(function() {
+                                    $("#input-b9").fileinput({
+                                        language: 'zh',
+                                        showPreview: false,
+                                        showUpload: true,
+                                        elErrorContainer: '#kartik-file-errors',
+                                        allowedFileExtensions: ["jpg", "png", "jpeg"]
+                                    });
+                                });
+                            </script>
+                            <div>
+                                <img class="img-fluid border-light" src="{{ course.Cover_path }}" class="float-left" style="width: 250px; height: 150px; padding-top: 1rem;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container" style="padding-top: 2rem">
+                    <div class="row">
+                        <div class="col-2">课程名称</div>
+                        <div class="col-10 text-muted">{{ course.Cname }}</div>
+                    </div>
+                </div>
+                <div class="container" style="padding-top: 2rem">
+                    <div class="row">
+                        <div class="col-2">课程编号</div>
+                        <div class="col-10 text-muted">{{ course.Cno }}</div>
+                    </div>
+                </div>
+                <div class="container" style="padding-top: 2rem">
+                    <div class="row">
+                        <div class="col-2">授课教师</div>
+                        <div class="col-10 text-muted">
+                            {% for teacher in course.teachers %}
+                            {{ teacher.Tname }}&nbsp;
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="padding-top: 2rem">
+                    <div class="row">
+                        <div class="col-2">课程类别</div>
+                        <div class="col-10 text-muted">{{ course.Ctype }}</div>
+                    </div>
+                </div>
+                <div class="container" style="padding-top: 2rem">
+                    <div class="row">
+                        <div class="col-2">课程时间</div>
+                        <div class="col-10 text-muted">{{ course.Ctime }}</div>
+                    </div>
+                </div>
+
+                <div class="container" style="padding-top: 2rem">
+                    <form>
+                        <div class="form-group row">
+                            <label for="courseIntro" class="col-2 col-form-label">课程介绍
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                  </svg>
+                            </label>
+                            <div class="col-8">
+                            <textarea class="form-control-plaintext text-muted" id="courseIntro"rows="6" >{{ course.introduction }}</textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="container" style="padding-top: 2rem"></div>
+                <button type="submit" class="btn btn-info">确认修改</button>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock content %}

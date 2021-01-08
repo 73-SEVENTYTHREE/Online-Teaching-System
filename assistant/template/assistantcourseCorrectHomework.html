@@ -1,0 +1,97 @@
+{% extends "framework.html" %}
+{% block content %}
+    <div class="row col-12">
+        <div class="col-12 column">
+        <!--导航栏-->
+        <div class="navbar nav-pills navbar-expand-md navbar-light ">
+            <div class="container text-center" style="padding-left: 350px">
+                <img height="150" width="200" src="{{ course.Cover_path }}" class="float-left">
+            </div>
+            <div class="col-md-7 column" style="padding-right: 300px">
+                <div class="card">
+                    <div class="card-body">
+                        <strong>课程名称:{{ course.Cname }}</strong>
+                        <strong>
+                            <p class="card-text">授课教师:
+                        {% for teacher in course.teachers %}
+                            {{ teacher.Tname }}&nbsp;
+                        {% endfor %}}
+                        </p>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--介绍栏-->
+        <nav class="navbar navbar-expand-md navbar-light bg-white" >
+            <ul class="nav nav-tabs col-md-12" style="padding-left: 350px">
+                <li class="nav-item" >
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.assistant_course', Cno=course.Cno) }}">课程简介</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.manage_courseware', Cno=course.Cno) }}">课件管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.release_homework', Cno=course.Cno) }}">作业发布</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-info" href="{{ url_for('assistant.correct_homework', Cno=course.Cno) }}">作业批改</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.manage_students', Cno=course.Cno) }}">成员管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ url_for('assistant.discussion', Cno=course.Cno) }}">讨论专区</a>
+                </li>
+            </ul>
+        </nav>
+        <!--页面-->
+        <div class="col-md-8 column card border-0" style="margin-left: auto;margin-right: auto">
+
+            <div class="container col-12 border border-0 rounded rounded-lg card"  style="line-height: 30px;">
+                <a href="#softwareManagement01" class=" list-group-item list-group-item-action list-group-item-info" data-toggle="collapse">进行中的作业</a>
+                <div id="softwareManagement01">
+                    <div class="list-group-item">
+                        <a class="col-1">作业1</a>
+                        <button type="button" class="btn btn-info float-right text-center">批改</button>
+                        <a class="col-2 float-right text-left">已交:55</a>
+                    </div>
+                    <div class="list-group-item">
+                        <a class="col-1">作业2</a>
+                        <button type="button" class="btn btn-info float-right text-center">批改</button>
+                        <a class="col-2 float-right text-left">已交:25</a>
+                    </div>
+                    <div class="list-group-item">
+                        <a class="col-1">作业3</a>
+                        <button type="button" class="btn btn-info float-right text-center">批改</button>
+                        <a class="col-2 float-right text-left">已交:55</a>
+                    </div>
+                </div>
+
+                <a href="#softwareManagement02" class="list-group-item list-group-item-action list-group-item-info" data-toggle="collapse">已截止的作业</a>
+                <div id="softwareManagement02">
+                    <div class="list-group-item">
+                        <a class="col-1">作业1</a>
+                        <button type="button" class="btn btn-info float-right text-center">批改</button>
+                        <a class="col-2 float-right text-left">已交:55</a>
+                    </div>
+                    <div class="list-group-item">
+                        <a class="col-1">作业2</a>
+                        <button type="button" class="btn btn-info float-right text-center">批改</button>
+                        <a class="col-2 float-right text-left">已交:25</a>
+                    </div>
+                    <div class="list-group-item">
+                        <a class="col-1">作业3</a>
+                        <button type="button" class="btn btn-info float-right text-center">批改</button>
+                        <a class="col-2 float-right text-left">已交:55</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+</div>
+    </div>
+{% endblock content %}
+
